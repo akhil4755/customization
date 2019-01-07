@@ -15,10 +15,10 @@ class App extends React.Component {
 
 handleokbutton = (e) =>
 {
-    let customizationElement = {
+    let customizationElement = [{
       font : this.state.fontValue,
       section : this.state.sectionValue
-    }
+    }]
 
     let flag=0;
 
@@ -58,8 +58,6 @@ handlefontChange = (e) => {
 
   render() {
       console.log(this.state.customization)
-      console.log(this.state.fontValue)
-      console.log(this.state.sectionValue)
     
     return (
         <div>          
@@ -79,7 +77,7 @@ handlefontChange = (e) => {
 
           <br/>
 
-          <button onChange={this.handleokbutton}> OK </button>
+          <button onClick={this.handleokbutton}> OK </button>
         </div>
       );
   }
