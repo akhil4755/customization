@@ -4,7 +4,7 @@ const initialstate = {
     customization: [],
 
       fontValue: null,
-      sectionValue: null,
+      classValue: null,
   };
 
 class App extends React.Component {
@@ -13,11 +13,14 @@ class App extends React.Component {
     this.state = initialstate
 }
 
-handleokbutton = (e) =>
+handlefontChange = (e) =>
 {
+    //this.setState({fontValue: e.target.value})
+
     let customizationElement = [{
-      font : this.state.fontValue,
-      section : this.state.sectionValue
+      font : e.target.value,
+      class : this.state.classValue
+      color : 'insert color'
     }]
 
     let flag=0;
@@ -32,7 +35,7 @@ handleokbutton = (e) =>
 
         for(let i=0; i<arr.length; i++)
         {
-          if(arr[i].section === this.state.sectionValue )
+          if(arr[i].class === this.state.classValue )
           {
              arr[i].font = this.state.fontValue;
              this.setState({customization:arr})
@@ -48,12 +51,8 @@ handleokbutton = (e) =>
     }
 }
 
-handlesectionChange = (e) => {
-      this.setState({sectionValue: e.target.value})
-  }
-
-handlefontChange = (e) => {
-      this.setState({fontValue: e.target.value})
+handleclassChange = (e) => {
+      this.setState({classValue: e.target.value})
   }
 
   render() {
@@ -61,7 +60,7 @@ handlefontChange = (e) => {
     
     return (
         <div>          
-          <select onChange={this.handlesectionChange}>
+          <select onChange={this.handleclassChange}>
             <option disabled selected>choose</option>
             <option value="about">About</option>
             <option value="Bio">Bio</option>
@@ -75,9 +74,6 @@ handlefontChange = (e) => {
             <option value="Arial">Arial</option>
           </select>
 
-          <br/>
-
-          <button onClick={this.handleokbutton}> OK </button>
         </div>
       );
   }
